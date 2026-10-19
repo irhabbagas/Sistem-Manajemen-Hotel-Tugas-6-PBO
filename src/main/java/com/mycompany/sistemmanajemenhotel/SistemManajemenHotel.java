@@ -56,7 +56,7 @@ public class SistemManajemenHotel {
         while (isRunning) {
             System.out.println("\n--- MENU UTAMA ---");
             System.out.println("1. Tambah Kamar Baru");
-            System.out.println("2. Tampilkan Seluruh Kamar & Simulasi Layanan");
+            System.out.println("2. Tampilkan Seluruh Kamar & Eksekusi Interface");
             System.out.println("3. Cari Kamar (Fitur Overloading)");
             System.out.println("4. Keluar");
             System.out.print("Pilih Menu (1-4): ");
@@ -108,7 +108,7 @@ public class SistemManajemenHotel {
                     break;
 
                 case 2:
-                    System.out.println("\n--- Daftar Seluruh Kamar ---");
+                    System.out.println("\n--- Daftar Seluruh Kamar & Aksi Interface ---");
                     if (jumlahKamar == 0) {
                         System.out.println("Belum ada data kamar.");
                     } else {
@@ -116,6 +116,18 @@ public class SistemManajemenHotel {
                             System.out.printf("%d. ", (i + 1));
                             daftarKamar[i].tampilkanInfo();
                             simulasiLayanan(daftarKamar[i]);
+                            daftarKamar[i].hitungDendaKeterlambatan();
+
+                            if (daftarKamar[i] instanceof DapatDipesan) {
+                                DapatDipesan itemPesan = (DapatDipesan) daftarKamar[i];
+                                itemPesan.prosesPemesanan();
+                            }
+
+                            if (daftarKamar[i] instanceof DapatDinilai) {
+                                DapatDinilai itemNilai = (DapatDinilai) daftarKamar[i];
+                                itemNilai.beriRating(5);
+                            }
+
                             System.out.println();
                         }
                         System.out.println("* Total Objek Kamar Terdaftar: " + Kamar.totalKamarDibuat);

@@ -1,6 +1,6 @@
 package com.mycompany.sistemmanajemenhotel;
 
-public class Kamar {
+public abstract class Kamar {
     private String nomorKamar;
     private double hargaPerMalam;
     private boolean terisi;
@@ -52,4 +52,6 @@ public class Kamar {
     public void layananKamar() {
         System.out.println("-> Layanan Kamar Standar: Pembersihan kamar harian.");
     }
+
+    public abstract void hitungDendaKeterlambatan();
 }
