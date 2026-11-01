@@ -3,8 +3,11 @@ package com.mycompany.sistemmanajemenhotel;
 public class KamarReguler extends Kamar implements DapatDipesan {
     private String tipeRanjang;
 
-    public KamarReguler(String nomorKamar, double hargaPerMalam, String tipeRanjang) {
+    public KamarReguler(String nomorKamar, double hargaPerMalam, String tipeRanjang) throws Exception {
         super(nomorKamar, hargaPerMalam);
+        if (tipeRanjang == null || tipeRanjang.trim().isEmpty()) {
+            throw new Exception("Tipe ranjang tidak boleh kosong!");
+        }
         this.tipeRanjang = tipeRanjang;
     }
 

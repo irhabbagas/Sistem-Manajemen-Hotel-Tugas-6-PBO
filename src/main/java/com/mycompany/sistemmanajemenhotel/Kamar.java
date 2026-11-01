@@ -7,9 +7,12 @@ public abstract class Kamar {
 
     public static int totalKamarDibuat = 0;
 
-    public Kamar(String nomorKamar, double hargaPerMalam) {
+    public Kamar(String nomorKamar, double hargaPerMalam) throws Exception {
+        if (hargaPerMalam <= 0) {
+            throw new Exception("Harga kamar harus lebih besar dari 0!");
+        }
         this.nomorKamar = nomorKamar;
-        setHargaPerMalam(hargaPerMalam);
+        this.hargaPerMalam = hargaPerMalam;
         this.terisi = false;
         totalKamarDibuat++;
     }
@@ -26,13 +29,11 @@ public abstract class Kamar {
         return this.hargaPerMalam;
     }
 
-    public void setHargaPerMalam(double hargaPerMalam) {
-        if (hargaPerMalam > 0) {
-            this.hargaPerMalam = hargaPerMalam;
-        } else {
-            System.out.println("[Peringatan] Harga kamar tidak valid! Diset ke default 100000.");
-            this.hargaPerMalam = 100000;
+    public void setHargaPerMalam(double hargaPerMalam) throws Exception {
+        if (hargaPerMalam <= 0) {
+            throw new Exception("Harga kamar harus lebih besar dari 0!");
         }
+        this.hargaPerMalam = hargaPerMalam;
     }
 
     public boolean isTerisi() {
